@@ -74,9 +74,11 @@ header {
     }
 
     #profile-img {
+        align-self: center;
         width: 160px;
         height: 160px;
-        margin-left: 0;
+        margin-right: 35px;
+        margin-left: 35px;
         margin-top: 15px;
     }
 
@@ -123,6 +125,8 @@ header {
         font-size: 1.3rem;
     }
 }
+/* ################################### */
+
 /* التحكم في اللغات */
 body.lang-ar {
     direction: rtl;
