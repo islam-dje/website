@@ -1,0 +1,268 @@
+/* الإعدادات العامة */
+body {
+    /* لون أساسي داكن */
+    background-color: #0f172a; 
+    /* طبقات من التدرجات لخلق تأثير الـ Mesh */
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(30, 64, 175, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.2) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(37, 99, 235, 0.2) 0px, transparent 50%);
+    background-attachment: fixed; /* لجعل الخلفية ثابتة أثناء التمرير */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease; /* لإضافة نعومة عند التبديل */
+    margin: 0;
+    padding: 20px;
+    font-family: 'Cairo', sans-serif; /* هنا نطبق الخط */
+}
+
+/* تنسيق النصوص البرمجية */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 10px;
+    direction: ltr;
+}
+
+
+/* التحكم في اللغات */
+body.lang-ar {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif; /* هنا نطبق الخط */
+}
+
+body.lang-en {
+    direction: ltr;
+    font-family: 'Cairo', sans-serif; /* هنا نطبق الخط */
+}
+
+/* إخفاء النصوص غير المفعلة */
+body.lang-ar .text-en {
+    display: none;
+}
+
+body.lang-en .text-ar {
+    display: none;
+}
+
+/* تنسيق الصورة الشخصية */
+#profile-img {
+    display: flex;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    margin-top: 20px;
+    object-fit: cover; /*لضمان عدم تمدد الصورة*/
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-left: 50px;
+    /* منع الصورة من الانكماش إذا كان النص طويلاً */
+    flex-shrink: 0;
+}
+
+main {
+    display: flex;
+    gap: 20px;
+}
+main #hi{
+    display: block;
+}
+
+
+/* تنسيق موحد لجميع البطاقات */
+.python-card, .godot-card, .html-card, .css-card, .js-card {
+    /* أولاً: يجب أن تكون الخلفية شفافة قليلاً لرؤية التأثير */
+    background: rgba(255, 255, 255, 0.116);   
+    /* ثانياً: خاصية التبلور (التغبيش) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* لدعم متصفح Safari */
+    
+    border: 1px solid rgba(255, 255, 255, 0.281);
+    display: flex;
+    flex-direction: row; /* يضمن بقاء الأيقونة والنص بجانب بعضهما */
+    align-items: center;  /* يوسط العناصر عمودياً داخل البطاقة */
+    justify-content: flex-start; /* يبدأ العناصر من اليسار (أو اليمين في العربي) */
+    width: 270px;
+    height: auto; /* يفضل جعل الطول تلقائي ليتناسب مع المحتوى */
+    min-height: 150px;
+    border-radius: 30px;
+    padding: 15px; /* لإضافة مساحة داخلية حول المحتوى */
+    gap: 15px; /* يخلق مسافة ثابتة بين الأيقونة والنص */
+}
+
+/* تنسيق عام لجميع أيقونات المهارات */
+.python-card img, .godot-card img, .html-card img, .css-card img, .js-card img {
+    width: 80px;  /* حجم موحد للأيقونات */
+    height: 80px;
+    object-fit: contain;
+    flex-shrink: 0; /* يمنع الأيقونة من الانكماش إذا كان النص طويلاً */
+    padding: 0;     /* حذف الـ padding القديم */
+    margin: 0;
+}
+.python-card h2, .godot-card h2, .html-card h2, .css-card h2, .js-card h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: contain;
+    flex-shrink: 0; /* يمنع الأيقونة من الانكماش إذا كان النص طويلاً */
+    padding: 0;     /* حذف الـ padding القديم */
+    margin: 0;
+}
+.card-icon {
+    padding-bottom: 40px; /* حذف أي padding قد يؤثر على المحاذاة */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* مسافة بين العنوان والأيقونة */
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* الحاوية الأساسية للخلفية */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #0f172a; /* لون الخلفية الداكن */
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    /* إضافة mixing mode لجعل تداخل الألوان مذهلاً */
+    mix-blend-mode: screen; 
+    will-change: transform;
+}
+
+/* فقاعة 1: حركة دائرية واسعة */
+.blob-1 {
+    background: #1e40af;
+    top: -10%;
+    left: -10%;
+    animation: move-complex-1 12s infinite linear;
+}
+
+/* فقاعة 2: حركة قطرية مع تغيير الحجم */
+.blob-2 {
+    background: #7c3aed;
+    bottom: 5%;
+    right: 5%;
+    animation: move-complex-2 15s infinite ease-in-out;
+}
+
+/* فقاعة 3: حركة نبضية في المنتصف */
+.blob-3 {
+    background: #0ea5e9;
+    top: 30%;
+    left: 20%;
+    animation: move-complex-3 18s infinite alternate;
+}
+
+/* مسارات حركة معقدة */
+@keyframes move-complex-1 {
+    0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+    33%  { transform: translate(400px, 150px) rotate(120deg) scale(1.2); }
+    66%  { transform: translate(150px, 400px) rotate(240deg) scale(0.8); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+
+@keyframes move-complex-2 {
+    0%   { transform: translate(0, 0) scale(1.2); }
+    50%  { transform: translate(-300px, -200px) scale(0.7); }
+    100% { transform: translate(0, 0) scale(1.2); }
+}
+
+@keyframes move-complex-3 {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    50%  { transform: translate(200px, -100px) scale(1.5); opacity: 0.6; }
+    100% { transform: translate(-100px, 200px) scale(1); opacity: 0.3; }
+}
+
+.lang-switch {
+  display: inline-flex;
+  background-color: #eee;
+  padding: 4px;
+  border-radius: 30px;
+  position: relative;
+  direction: ltr; /* لضمان ترتيب العناصر دائماً */
+}
+
+.lang-switch input { display: none; }
+
+.lang-switch label {
+  padding: 6px 18px;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.lang-switch .slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* حركة السلايدر عند اختيار اللغة الثانية */
+#en:checked ~ .slider {
+  transform: translateX(100%);
+}
+
+#ar:checked ~ label[for="ar"],
+#en:checked ~ label[for="en"] {
+  color: #000;
+}
+
+.insta , .wts , .mail {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.insta:hover , .wts:hover , .mail:hover {
+  transform: scale(1.15); /* تأثير عند تمرير الفأرة */
+}
+
+.insta:active , .wts:active , .mail:active {
+  transform: scale(0.9); /* تأثير عند الضغط */
+}
+
+.insta svg , .wts svg , .mail svg {
+  width: 40px;  /* يمكنك التحكم في الحجم من هنا */
+  height: 40px;
+}
+
+.mail p {
+  display: inline;  
+  font-size: 16px;
+  color: #ffffff;
+}
