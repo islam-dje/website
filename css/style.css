@@ -127,7 +127,7 @@ footer .text-en, footer .text-ar {
     }
 
     /* ===== الهيدر ===== */
-    header {
+    header .text-ar, header .text-en{
         flex-wrap: wrap;
         align-items: center;
         gap: 10px;
