@@ -1,4 +1,7 @@
 /* الإعدادات العامة */
+html {
+  scroll-behavior: smooth;
+}
 body {
     /* لون أساسي داكن */
     background-color: #0f172a; 
@@ -17,8 +20,12 @@ body {
     font-family: 'Cairo', sans-serif; /* هنا نطبق الخط */
 }
 
+a {
+    text-decoration: none;
+}
+
 /* تنسيق النصوص البرمجية */
-header {
+header .text-ar, header .text-en {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,6 +33,89 @@ header {
     border-bottom: 2px solid #ffffff;
     padding-bottom: 10px;
     direction: ltr;
+    
+}
+header .text-ar p{
+    font-size: 20px;
+    color: #ffffff;
+}
+header h1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* مسافة بين النص والأيقونة */
+}
+header h1 svg {
+    width: 50px;
+    height: 50px;
+}
+footer {
+    border-top: 2px solid #ffffff;
+    margin-top: 30px;
+    padding-top: 10px;
+    direction: ltr;
+}
+footer .text-en, footer .text-ar {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: center;
+    row-gap: 50px;
+    column-gap: 200px;
+    flex-wrap: wrap;
+}
+.name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; /* مسافة بين النص والأيقونة */
+    padding-left: 30px;
+}
+.services, .contact, .links {
+    /* أولاً: يجب أن تكون الخلفية شفافة قليلاً لرؤية التأثير */
+    background: rgba(255, 255, 255, 0.116);   
+    /* ثانياً: خاصية التبلور (التغبيش) */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* لدعم متصفح Safari */
+    
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, 0.281);
+    display: flex;
+    flex-direction: column; /* يضمن بقاء الأيقونة والنص بجانب بعضهما */
+    align-items: center;  /* يوسط العناصر عمودياً داخل البطاقة */
+    justify-content: flex-start; /* يبدأ العناصر من اليسار (أو اليمين في العربي) */
+    width: auto;
+    height: auto; /* يفضل جعل الطول تلقائي ليتناسب مع المحتوى */
+    min-height: 150px;
+    border-radius: 30px;
+    padding: 15px; /* لإضافة مساحة داخلية حول المحتوى */
+    gap: 15px; /* يخلق مسافة ثابتة بين الأيقونة والنص */
+    transition: transform 1s ease;
+
+}
+.name svg, .services svg, .contact svg, .links svg {
+    width: 30px;
+    height: 30px;
+}
+.services button, .contact button, .links button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 8px;
+    background-color:  #ffffff00;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+}
+.services button:hover, .contact button:hover, .links button:hover {
+  transform: scale(1.15); /* تأثير عند تمرير الفأرة */
+}
+.services button:active, .contact button:active, .links button:active {
+  transform: scale(0.9);
+   /* تأثير عند الضغط */
 }
 
 /* عندما يكون عرض الشاشة 768 بكسل أو أقل (الهواتف والأجهزة اللوحية) */
@@ -39,16 +129,26 @@ header {
     /* ===== الهيدر ===== */
     header {
         flex-wrap: wrap;
+        align-items: center;
         gap: 10px;
         justify-content: center;
         padding-bottom: 12px;
     }
 
     header h1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         width: 100%;
         text-align: center;
         font-size: 1.4rem;
         margin: 0;
+        justify-content: center
+    }
+
+    header h1 svg {
+    width: 32px;
+    height: 32px;
     }
 
     /* إخفاء نص الإيميل على الهاتف وإظهار الأيقونة فقط */
@@ -335,7 +435,7 @@ main #hi{
   color: #000;
 }
 
-.insta , .wts , .mail {
+.nav-bt-sr, .nav-bt-cn, .nav-bt-ln {
   background-color: rgba(255, 255, 255, 0);
   border: none;
   border-radius: 12px;
@@ -346,21 +446,37 @@ main #hi{
   transition: transform 0.2s ease;
 }
 
-.insta:hover , .wts:hover , .mail:hover {
+.nav-bt-sr:hover, .nav-bt-cn:hover, .nav-bt-ln:hover {
   transform: scale(1.15); /* تأثير عند تمرير الفأرة */
 }
 
-.insta:active , .wts:active , .mail:active {
-  transform: scale(0.9); /* تأثير عند الضغط */
+.nav-bt-sr:active, .nav-bt-cn:active, .nav-bt-ln:active {
+  transform: scale(0.9);
+   /* تأثير عند الضغط */
 }
 
-.insta svg , .wts svg , .mail svg {
+    
+
+.nav-bt-sr svg, .nav-bt-cn svg, .nav-bt-ln svg {
   width: 40px;  /* يمكنك التحكم في الحجم من هنا */
   height: 40px;
 }
 
-.mail p {
+.nav-bt-sr p, .nav-bt-cn p, .nav-bt-ln p {
   display: inline;  
   font-size: 16px;
   color: #ffffff;
+}
+
+
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* يكبر بنسبة 10% */
+    }
+    100% {
+        transform: scale(1); /* يعود لحجمه الطبيعي */
+    }
 }
